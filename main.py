@@ -1,23 +1,23 @@
-# IoT Weather Station
+from helpers import get_sensor_data, send_command
+import time
 
-import helpers
-from time import sleep
+def main():
+    print("IoT Weather Station (Mock Mode)")
+    print("Press Ctrl+C to stop.\n")
 
-sleepTime = 5           # seconds
-eventName = "weather"   # the name of the event as registered on the cloud
+    try:
+        while True:
+            data = get_sensor_data()
+            if data:
+                print("Temperature: {} C | Humidity: {} %".format(
+                    data["temperature"], data["humidity"]
+                ))
+            # Example: send a command every loop (optional)
+            send_command("PING")
+            time.sleep(2)  # wait 2 seconds between reads
+    except KeyboardInterrupt:
+        print("\nStopping Weather Station...")
 
-# main program
-def __main__():
-    while True:
-        # read the weather data from the arduino dock
-        weatherData = helpers.getWeatherData()
-        
-        # send to cloud service
-        if weatherData is not None:
-            helpers.sendToWatson(eventName, weatherData)
-        
-        # sleep
-        sleep(sleepTime)    
-    
-if __name__ == '__main__':
-    __main__()
+if __name__ == "__main__":
+    main()
+
