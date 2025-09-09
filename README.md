@@ -65,4 +65,8 @@ Add more sensors:
 
 Save logs to a database or CSV for historical analysis.
 
+
+<img width="756" height="531" alt="Screenshot from 2025-09-09 04-01-55" src="https://github.com/user-attachments/assets/9417bed7-6501-47c2-8ae8-82537988cec8" />
+
+
 Add mobile/web dashboard alongside Tkinter GUI.
